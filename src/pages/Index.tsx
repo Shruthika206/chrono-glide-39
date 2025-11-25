@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { CalendarHeader } from "@/components/calendar/CalendarHeader";
@@ -24,10 +23,8 @@ interface Event {
 }
 
 const Index = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
   const [currentDate, setCurrentDate] = useState(new Date());
   const [viewType, setViewType] = useState<ViewType>("month");
   const [events, setEvents] = useState<Event[]>([]);
@@ -37,24 +34,16 @@ const Index = () => {
   const [selectedHour, setSelectedHour] = useState<number | undefined>();
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
-      if (!session) {
-        navigate("/auth");
-      }
-    });
-
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
-      setLoading(false);
-      if (!session) {
-        navigate("/auth");
-      }
+    });
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
     });
 
     return () => subscription.unsubscribe();
-  }, [navigate]);
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -84,7 +73,7 @@ const Index = () => {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    navigate("/auth");
+    window.location.href = "/auth";
   };
 
   const handlePrevious = () => {
@@ -150,7 +139,6 @@ const Index = () => {
     if (!user) return;
 
     if (eventData.id) {
-      // Update existing event
       const { error } = await supabase
         .from("events")
         .update({
@@ -178,7 +166,6 @@ const Index = () => {
         fetchEvents();
       }
     } else {
-      // Create new event
       const { error } = await supabase.from("events").insert({
         user_id: user.id,
         title: eventData.title,
@@ -223,14 +210,6 @@ const Index = () => {
       fetchEvents();
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-lg">Loading...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
