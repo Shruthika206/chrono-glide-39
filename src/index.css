@@ -9,88 +9,99 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 218 11% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 218 11% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 218 11% 18%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Google Calendar Blue */
+    --primary: 217 89% 61%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-hover: 217 89% 56%;
+    
+    --secondary: 214 100% 97%;
+    --secondary-foreground: 217 89% 61%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 220 13% 96%;
+    --muted-foreground: 218 11% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 217 89% 61%;
+    --accent-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 89% 61%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Calendar specific colors */
+    --calendar-border: 220 13% 91%;
+    --calendar-today: 217 89% 61%;
+    --calendar-weekend: 220 13% 96%;
+    --calendar-hover: 217 89% 95%;
+    --calendar-selected: 217 89% 90%;
+    
+    /* Event colors */
+    --event-blue: 217 89% 61%;
+    --event-red: 0 84% 60%;
+    --event-green: 142 71% 45%;
+    --event-yellow: 45 93% 47%;
+    --event-purple: 262 83% 58%;
+    --event-orange: 27 98% 54%;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    --shadow-md: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
+    --shadow-lg: 0 2px 6px 2px rgba(60, 64, 67, 0.3), 0 8px 16px 4px rgba(60, 64, 67, 0.15);
+    
+    /* Transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 218 27% 14%;
+    --foreground: 0 0% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 218 27% 18%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 218 27% 18%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 217 89% 61%;
+    --primary-foreground: 0 0% 100%;
+    
+    --primary-hover: 217 89% 66%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 218 27% 22%;
+    --secondary-foreground: 217 89% 70%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 218 27% 22%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 217 89% 61%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 218 27% 28%;
+    --input: 218 27% 28%;
+    --ring: 217 89% 61%;
+    
+    --calendar-border: 218 27% 28%;
+    --calendar-today: 217 89% 61%;
+    --calendar-weekend: 218 27% 18%;
+    --calendar-hover: 218 27% 24%;
+    --calendar-selected: 218 27% 32%;
   }
 }
 
@@ -100,6 +111,40 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .calendar-cell {
+    @apply border border-calendar-border transition-colors hover:bg-calendar-hover cursor-pointer;
+  }
+  
+  .calendar-event {
+    @apply rounded px-2 py-1 text-sm font-medium cursor-pointer transition-all hover:shadow-md;
+  }
+  
+  .event-blue {
+    @apply bg-[hsl(var(--event-blue))] text-white;
+  }
+  
+  .event-red {
+    @apply bg-[hsl(var(--event-red))] text-white;
+  }
+  
+  .event-green {
+    @apply bg-[hsl(var(--event-green))] text-white;
+  }
+  
+  .event-yellow {
+    @apply bg-[hsl(var(--event-yellow))] text-white;
+  }
+  
+  .event-purple {
+    @apply bg-[hsl(var(--event-purple))] text-white;
+  }
+  
+  .event-orange {
+    @apply bg-[hsl(var(--event-orange))] text-white;
   }
 }
